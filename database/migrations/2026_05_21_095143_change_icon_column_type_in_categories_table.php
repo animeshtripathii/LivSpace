@@ -12,7 +12,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::statement('ALTER TABLE categories MODIFY icon TEXT');
+        $driver = DB::getDriverName();
+
+        if ($driver === 'pgsql') {
+            DB::statement('ALTER TABLE categories ALTER COLUMN icon TYPE TEXT');
+        } elseif ($driver === 'mysql') {
+            DB::statement('ALTER TABLE categories MODIFY icon TEXT');
+        } else {
+            Schema::table('categories', function (Blueprint $table) {
+                $table->text('icon')->nullable()->change();
+            });
+        }
     }
 
     /**
@@ -20,8 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('categories', function (Blueprint $table) {
-            //
-        });
+        //
     }
 };
