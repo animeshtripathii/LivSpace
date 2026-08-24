@@ -1384,19 +1384,19 @@ html[data-theme="dark"] .field select {
 	flex-wrap: wrap;
 }
 
-.page {
+.page-link {
 	padding: 0.4rem 0.75rem;
 	border-radius: 999px;
 	border: 1px solid var(--line);
 	font-size: 0.9rem;
 }
 
-.page.active {
+.page-link.active {
 	background: var(--text);
 	color: var(--bg);
 }
 
-.page.disabled {
+.page-link.disabled {
 	opacity: 0.5;
 	cursor: not-allowed;
 }
