@@ -3,6 +3,12 @@ set -e
 
 echo "==> Yadav Interior Application Starting..."
 
+# Ensure a valid APP_KEY is present
+if [ -z "$APP_KEY" ] || [ ${#APP_KEY} -lt 32 ]; then
+    echo "==> APP_KEY missing or invalid length. Generating valid application key..."
+    php artisan key:generate --force || true
+fi
+
 # Ensure storage directories and permissions exist
 mkdir -p storage/app/public \
          storage/framework/cache/data \
