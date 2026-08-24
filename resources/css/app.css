@@ -169,19 +169,21 @@ h3 {
 }
 
 .logo-mark {
-	width: 34px;
-	height: 34px;
-	border-radius: 999px;
-	border: 1px solid var(--line);
-	background: var(--surface);
+	width: 32px;
+	height: 32px;
+	border-radius: var(--radius-sm);
+	border: none;
+	background: transparent;
 	object-fit: contain;
-	padding: 3px;
+	display: block;
 }
 
 .footer-logo {
-	width: 48px;
-	height: 48px;
+	width: 42px;
+	height: 42px;
+	border-radius: var(--radius-sm);
 	object-fit: contain;
+	display: block;
 }
 
 .nav-links {
@@ -1238,108 +1240,6 @@ html[data-theme="dark"] .field select {
 	color: var(--muted);
 	border-top: 1px solid var(--line);
 	padding-top: 1.5rem;
-}
-
-.page-loader {
-	position: fixed;
-	inset: 0;
-	display: grid;
-	place-items: center;
-	background: transparent;
-	z-index: 100;
-	transition: opacity 0.4s ease, visibility 0.4s ease;
-}
-
-.page-loader.is-hidden {
-	opacity: 0;
-	visibility: hidden;
-}
-
-.loader-stack {
-	display: grid;
-	place-items: center;
-	gap: 0.75rem;
-}
-
-.loader-mark {
-	position: relative;
-	width: 96px;
-	height: 96px;
-	display: grid;
-	place-items: center;
-}
-
-.loader-letter {
-	font-family: var(--font-display);
-	font-size: 3.4rem;
-	letter-spacing: 0.12rem;
-	color: var(--text);
-	animation: loaderPulse 1.4s ease-in-out infinite;
-}
-
-.loader-ring {
-	position: absolute;
-	inset: -6px;
-	border-radius: 50%;
-	border: 2px solid var(--line);
-	border-top-color: var(--text);
-	box-shadow: 0 16px 32px var(--shadow);
-	animation: loaderSpin 1.1s linear infinite;
-}
-
-.loader-text {
-	font-size: 0.85rem;
-	letter-spacing: 0.3rem;
-	text-transform: uppercase;
-	color: var(--muted);
-	display: inline-flex;
-	align-items: center;
-}
-
-.loader-dots span {
-	display: inline-block;
-	animation: loaderDots 1s infinite;
-}
-
-.loader-dots span:nth-child(2) {
-	animation-delay: 0.2s;
-}
-
-.loader-dots span:nth-child(3) {
-	animation-delay: 0.4s;
-}
-
-@keyframes loaderSpin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
-}
-
-@keyframes loaderPulse {
-	0%,
-	100% {
-		transform: scale(1);
-		opacity: 0.85;
-	}
-	50% {
-		transform: scale(1.05);
-		opacity: 1;
-	}
-}
-
-@keyframes loaderDots {
-	0%,
-	100% {
-		opacity: 0.2;
-		transform: translateY(0);
-	}
-	50% {
-		opacity: 1;
-		transform: translateY(-3px);
-	}
 }
 
 .contact-callout-inner {

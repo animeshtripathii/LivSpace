@@ -19,22 +19,6 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-    <div class="page-loader" id="page-loader" role="status" aria-live="polite">
-        <div class="loader-stack">
-            <div class="loader-mark" aria-hidden="true">
-                <span class="loader-letter">R</span>
-                <span class="loader-ring"></span>
-            </div>
-            <div class="loader-text">
-                Loading
-                <span class="loader-dots" aria-hidden="true">
-                    <span>.</span>
-                    <span>.</span>
-                    <span>.</span>
-                </span>
-            </div>
-        </div>
-    </div>
     <div class="page">
         @include('partials.navbar')
         @if ($errors->any())
