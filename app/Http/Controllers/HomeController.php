@@ -11,14 +11,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        if (Project::where('is_published', true)->count() === 0) {
-            try {
-                (new \Database\Seeders\DatabaseSeeder())->run();
-            } catch (\Throwable $e) {
-                // Handled gracefully
-            }
-        }
-
         // Real stats from the database
         $clientCount   = User::where('role', 'client')->count();
         $projectCount  = Project::where('is_published', true)->count();

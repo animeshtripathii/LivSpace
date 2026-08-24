@@ -15,6 +15,10 @@ use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/up', function () {
+    return response('OK', 200)->header('Content-Type', 'text/plain');
+});
+
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::view('/contact', 'home.contact')->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');

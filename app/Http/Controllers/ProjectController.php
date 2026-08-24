@@ -10,14 +10,6 @@ class ProjectController extends Controller
 {
     public function index(Request $request)
     {
-        if (Project::where('is_published', true)->count() === 0) {
-            try {
-                (new \Database\Seeders\DatabaseSeeder())->run();
-            } catch (\Throwable $e) {
-                // Handled gracefully
-            }
-        }
-
         $categories = Category::with('subcategories')->orderBy('name')->get();
 
         $projects = Project::with(['designer.user', 'category', 'subcategory'])

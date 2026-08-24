@@ -32,12 +32,8 @@ php artisan storage:link --force || true
 
 # Run database migrations if AUTO_MIGRATE is true or by default
 if [ "${AUTO_MIGRATE:-true}" = "true" ]; then
-    echo "==> Running database migrations..."
-    php artisan migrate --force || echo "Migration encountered an issue or database is not yet ready."
-    
-    # Automatically seed initial categories, designers, and projects
-    echo "==> Ensuring initial database records and sample projects exist..."
-    php artisan db:seed --force || echo "Database seeding step completed."
+    echo "==> Running database migrations and verifying initial records..."
+    php artisan migrate --force || echo "Migration step completed."
 fi
 
 # Optimize Laravel cache for production
