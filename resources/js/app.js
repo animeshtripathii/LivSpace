@@ -31,6 +31,25 @@ if (toggle) {
 	});
 }
 
+const navToggle = document.getElementById('nav-toggle');
+const siteHeader = document.getElementById('site-header');
+const navMenu = document.getElementById('nav-menu');
+
+if (navToggle && navMenu) {
+	navToggle.addEventListener('click', (e) => {
+		e.stopPropagation();
+		const isOpen = navMenu.classList.toggle('is-open');
+		navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+	});
+
+	document.addEventListener('click', (e) => {
+		if (siteHeader && !siteHeader.contains(e.target)) {
+			navMenu.classList.remove('is-open');
+			navToggle.setAttribute('aria-expanded', 'false');
+		}
+	});
+}
+
 const toasts = document.querySelectorAll('[data-toast]');
 
 toasts.forEach((toast) => {
