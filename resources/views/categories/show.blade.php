@@ -23,7 +23,7 @@
                         $categoryLine = $subcategoryLabel ? $categoryLabel . ' / ' . $subcategoryLabel : $categoryLabel;
                         $designerName = $project->designer?->user?->name ?? __('app.projects.show.meta_designer_fallback');
                         $afterImage = $project->after_image
-                            ? Storage::url($project->after_image)
+                            ? (\Illuminate\Support\Str::startsWith($project->after_image, ['http://', 'https://']) ? $project->after_image : Storage::url($project->after_image))
                             : asset('placeholder.svg');
                         $canMessageDesigner = !auth()->check() || auth()->id() !== optional($project->designer)->user_id;
                     @endphp

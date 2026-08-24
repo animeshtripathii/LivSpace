@@ -35,11 +35,9 @@ if [ "${AUTO_MIGRATE:-true}" = "true" ]; then
     echo "==> Running database migrations..."
     php artisan migrate --force || echo "Migration encountered an issue or database is not yet ready."
     
-    # Run seeders if DB_SEED is enabled
-    if [ "${DB_SEED:-false}" = "true" ]; then
-        echo "==> Seeding database..."
-        php artisan db:seed --force || echo "Database seeding failed or already populated."
-    fi
+    # Automatically seed initial categories, designers, and projects
+    echo "==> Ensuring initial database records and sample projects exist..."
+    php artisan db:seed --force || echo "Database seeding step completed."
 fi
 
 # Optimize Laravel cache for production

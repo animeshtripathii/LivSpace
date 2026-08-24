@@ -64,7 +64,7 @@ $videoExtensions = ['mp4', 'webm', 'mov'];
         <article class="card">
             <img
                 class="card-image"
-                src="{{ $project->before_image ? asset('storage/' . $project->before_image) : asset('placeholder.svg') }}"
+                src="{{ $project->before_image ? (\Illuminate\Support\Str::startsWith($project->before_image, ['http://', 'https://']) ? $project->before_image : asset('storage/' . $project->before_image)) : asset('placeholder.svg') }}"
                 alt="{{ __('app.projects.show.before') }}"
             >
             <p>{{ __('app.projects.show.gallery_before_text') }}</p>
@@ -72,7 +72,7 @@ $videoExtensions = ['mp4', 'webm', 'mov'];
         <article class="card">
             <img
                 class="card-image"
-                src="{{ $project->after_image ? asset('storage/' . $project->after_image) : asset('placeholder.svg') }}"
+                src="{{ $project->after_image ? (\Illuminate\Support\Str::startsWith($project->after_image, ['http://', 'https://']) ? $project->after_image : asset('storage/' . $project->after_image)) : asset('placeholder.svg') }}"
                 alt="{{ __('app.projects.show.after') }}"
             >
             <p>{{ __('app.projects.show.gallery_after_text') }}</p>
