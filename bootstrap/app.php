@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Foundation\Application;
+use App\Http\Middleware\ClientMiddleware;
+use App\Http\Middleware\DesignerMiddleware;
+use App\Http\Middleware\SetLocaleMiddleware;
+use Illuminate\Foundation\Configuration\Exceptions;
+use Illuminate\Foundation\Configuration\Middleware;
+
+$app = Application::configure(basePath: dirname(__DIR__))
+    ->withRouting(
+        web: __DIR__.'/../routes/web.php',
+        commands: __DIR__.'/../routes/console.php',
+        health: '/up',
+    )
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->trustProxies(at: '*');
+
+        $middleware->alias([
+            'client' => ClientMiddleware::class,
+            'designer' => DesignerMiddleware::class,
+        ]);
+
+        $middleware->web(append: SetLocaleMiddleware::class);
+    })
+    ->withExceptions(function (Exceptions $exceptions) {
+        //
+    })->create();
+
+if ($storagePath = env('APP_STORAGE_PATH')) {
+    $app->useStoragePath($storagePath);
+}
+
+return $app;
