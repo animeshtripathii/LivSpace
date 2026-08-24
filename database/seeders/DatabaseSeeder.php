@@ -265,4 +265,6 @@ class DatabaseSeeder extends Seeder
                 $projectData
             );
         }
+    }
 }
+
